@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+dist/
+build/
+bin/ffmpeg.exe
+assets/tetomidi.ico
+ff/
+*.zip
+*.mid
+*.mp3
