@@ -20,3 +20,4 @@ build_script:
 artifacts:
   - path: tetomidi-windows.zip
     name: tetomidi
+# build
