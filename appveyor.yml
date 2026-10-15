@@ -1,0 +1,20 @@
+image: Visual Studio 2022
+
+environment:
+  PATH: C:\Python311-x64;C:\Python311-x64\Scripts;%PATH%
+  TORCH_INDEX: cu121   # đổi thành "cpu" nếu zip quá nặng
+
+install:
+  - python -m pip install --upgrade pip
+  - pip install torch --index-url https://download.pytorch.org/whl/%TORCH_INDEX%
+  - pip install -r requirements.txt pyinstaller
+
+build_script:
+  - python make_icon.py
+  - ps: .\fetch_ffmpeg.ps1
+  - pyinstaller tetomidi.spec --noconfirm
+  - 7z a -tzip tetomidi-windows.zip dist\tetomidi
+
+artifacts:
+  - path: tetomidi-windows.zip
+    name: tetomidi
